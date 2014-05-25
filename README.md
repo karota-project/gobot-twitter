@@ -6,9 +6,6 @@ tweet
 - Docomo雑談APIから取得したtextをTweetする
 - Twitter API 1.1
 - Using package Anaconda https://godoc.org/github.com/ChimeraCoder/anaconda
-
-## Account
-- テスト用アカウントを使用 (ID : roomba2d2)
 - 非公開設定 https://support.twitter.com/articles/20169930-
 
 ## Usage
