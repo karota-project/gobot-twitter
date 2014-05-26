@@ -2,21 +2,42 @@ package twitter
 
 import (
 	"../anaconda"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 )
 
-const (
-	ConsumerKey       = "aVPbYklTENfmoXI6V7GWhUqUm"
-	ConsumerSecret    = "Nc2ibYyC4fjlrXuRrTQCRtCjcSm5HUz3TnW3O6bTOiLMMSWIb8"
-	AccessToken       = "420103191-ESIZxnlnxeumcfJYNqbXFzgGObwwlulBtoEGgNf5"
-	AccessTokenSecret = "RHfbeaPNEGdnUUSThYDjWxLlGxsyWq8CSvftN4EgfCQeS"
-)
+type JsonObj struct {
+	ConsumerKey       string
+	ConsumerSecret    string
+	AccessToken       string
+	AccessTokenSecret string
+}
 
-func Search(search string) string {
+func parseJson(path string) *JsonObj {
 
-	anaconda.SetConsumerKey(ConsumerKey)
-	anaconda.SetConsumerSecret(ConsumerSecret)
-	api := anaconda.NewTwitterApi(AccessToken, AccessTokenSecret)
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+
+	obj := &JsonObj{}
+	if err := json.Unmarshal([]byte(data), obj); err != nil {
+		fmt.Println(err)
+		return nil
+	}
+
+	return obj
+}
+
+func Search(search string, path string) string {
+
+	config := parseJson(path)
+
+	anaconda.SetConsumerKey(config.ConsumerKey)
+	anaconda.SetConsumerSecret(config.ConsumerSecret)
+	api := anaconda.NewTwitterApi(config.AccessToken, config.AccessTokenSecret)
 
 	search_result, err := api.GetSearch(search, nil)
 
@@ -34,11 +55,13 @@ func Search(search string) string {
 	return result
 }
 
-func Tweet(status string) bool {
+func Tweet(status string, path string) bool {
 
-	anaconda.SetConsumerKey(ConsumerKey)
-	anaconda.SetConsumerSecret(ConsumerSecret)
-	api := anaconda.NewTwitterApi(AccessToken, AccessTokenSecret)
+	config := parse(path)
+
+	anaconda.SetConsumerKey(config.ConsumerKey)
+	anaconda.SetConsumerSecret(config.ConsumerSecret)
+	api := anaconda.NewTwitterApi(config.AccessToken, config.AccessTokenSecret)
 
 	result, err := api.PostTweet(status, nil)
 

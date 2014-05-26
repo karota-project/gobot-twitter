@@ -8,15 +8,25 @@ tweet
 - Using package Anaconda https://godoc.org/github.com/ChimeraCoder/anaconda
 - 非公開設定 https://support.twitter.com/articles/20169930-
 
+## config
+<pre>
+{
+    "ConsumerKey": "xxxxxxxx",
+    "ConsumerSecret": "xxxxxxxx",
+    "AccessToken": "xxxxxxxx",
+    "AccessTokenSecret": "xxxxxxxx"
+}
+</pre>
+
 ## Usage
 <pre>
 /* search tweet*/
-search := twitter.Search("fisproject")
+search := twitter.Search("fisproject", "./roomba2d2.json")
 fmt.Println(search)
 
 /* post tweet*/
-tweet := twitter.Tweet("post-test")
-fmt.Println(tweet) 
+tweet := twitter.Tweet("post-test", "./roomba2d2.json")
+fmt.Println(tweet)
 </pre>
 
 ## Result
