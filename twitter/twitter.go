@@ -57,7 +57,7 @@ func Search(search string, path string) string {
 
 func Tweet(status string, path string) bool {
 
-	config := parse(path)
+	config := parseJson(path)
 
 	anaconda.SetConsumerKey(config.ConsumerKey)
 	anaconda.SetConsumerSecret(config.ConsumerSecret)
