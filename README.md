@@ -5,8 +5,20 @@ tweet
 - Roomba-Hack
 - Docomo雑談APIから取得したtextをTweetする
 - Twitter API 1.1
-- Using package Anaconda https://godoc.org/github.com/ChimeraCoder/anaconda
 - 非公開設定 https://support.twitter.com/articles/20169930-
+
+## submodule
+<pre>
+[submodule "tokenbucket"]
+	path = tokenbucket
+	url = https://github.com/ChimeraCoder/tokenbucket
+[submodule "go-oauth"]
+	path = go-oauth
+	url = https://github.com/garyburd/go-oauth
+[submodule "anaconda"]
+	path = anaconda
+	url = https://github.com/ChimeraCoder/anaconda
+</pre>
 
 ## config
 <pre>

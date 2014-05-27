@@ -1,0 +1,9 @@
+[submodule "tokenbucket"]
+	path = tokenbucket
+	url = https://github.com/ChimeraCoder/tokenbucket
+[submodule "go-oauth"]
+	path = go-oauth
+	url = https://github.com/garyburd/go-oauth
+[submodule "anaconda"]
+	path = anaconda
+	url = https://github.com/ChimeraCoder/anaconda
