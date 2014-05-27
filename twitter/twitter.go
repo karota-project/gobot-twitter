@@ -31,7 +31,7 @@ func parseJson(path string) *JsonObj {
 	return obj
 }
 
-func Search(search string, path string) string {
+func Search(search string, path string) (result string, err error) {
 
 	config := parseJson(path)
 
@@ -43,19 +43,17 @@ func Search(search string, path string) string {
 
 	if err != nil {
 		panic(err)
-		return "false"
+		return result, err
 	}
-
-	var result string
 
 	for _, tweet := range search_result {
 		result += tweet.Text
 	}
 
-	return result
+	return result, nil
 }
 
-func Tweet(status string, path string) bool {
+func Tweet(status string, path string) (err error) {
 
 	config := parseJson(path)
 
@@ -67,10 +65,10 @@ func Tweet(status string, path string) bool {
 
 	if err != nil {
 		panic(err)
-		return false
+		return err
 	}
 
 	fmt.Println(result)
 
-	return true
+	return nil
 }

@@ -8,11 +8,16 @@ import (
 func main() {
 
 	/* search tweet*/
-	search := twitter.Search("fisproject", "./roomba2d2.json")
+	search, err := twitter.Search("fisproject", "./roomba2d2.json")
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Println(search)
 
 	/* post tweet*/
-	tweet := twitter.Tweet("post-test", "./roomba2d2.json")
-	fmt.Println(tweet)
+	err = twitter.Tweet("post-test", "./roomba2d2.json")
+	if err != nil {
+		fmt.Println(err)
+	}
 
 }
