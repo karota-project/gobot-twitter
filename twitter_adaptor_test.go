@@ -1,20 +1,20 @@
 package twitter
 
 import (
-  "github.com/hybridgroup/gobot"
-  "testing"
+	"github.com/hybridgroup/gobot"
+	"testing"
 )
 
 func initTestTwitterAdaptor() *TwitterAdaptor {
-  return NewTwitterAdaptor("myAdaptor")
+	return NewTwitterAdaptor("myAdaptor")
 }
 
 func TestTwitterAdaptorConnect(t *testing.T) {
-  a := initTestTwitterAdaptor()
-  gobot.Expect(t, a.Connect(), true)
+	a := initTestTwitterAdaptor()
+	gobot.Expect(t, a.Connect(), true)
 }
 
 func TestTwitterAdaptorFinalize(t *testing.T) {
-  a := initTestTwitterAdaptor()
-  gobot.Expect(t, a.Finalize(), true)
+	a := initTestTwitterAdaptor()
+	gobot.Expect(t, a.Finalize(), true)
 }
